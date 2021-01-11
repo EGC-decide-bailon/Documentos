@@ -77,21 +77,21 @@ Concretamente, hemos creado el componente de la cabina , denominado “votings�
 
 -	Votings.component.html : que contiene el template de la interfaz creada. En este archivo hemos utilizado el elemento *ngIf propio en el Angular en el form, ya que la votación solo se puede realizar si el usuario ha iniciado sesión, de esta forma y utilizando este elemento no aseguramos de que en caso de que el usuario no haya iniciado sesión se le presente una vista donde pueda hacerlo (Imagen1) y a continuación proceda a votar, o en el caso de que si esté loggeada pueda acceder directamente a la votación (Imagen 2). 
 
-![Imagen 1](Imagenes/votings.component.html_sign_in "votings.component.html sign in")
-![Imagen 2](Imagenes/votings.component.html_vote "votings.component.html vote")
+![Imagen 1](Imagenes/votings.component.html_sign_in.png "votings.component.html sign in")
+![Imagen 2](Imagenes/votings.component.html_vote.png "votings.component.html vote")
 
 -	Votings.component.css: En el archivo html se utiliza Bootstrap, aún así decidimos utilizar botones diseñados mediante css para darle un toque más original a la interfaz de de la cabina.
 
-![Imagen 3](Imagenes/votings.component.css_ejemplo_de_diseño_de_botón "votings.component.css ejemplo de diseño de botón")
+![Imagen 3](Imagenes/votings.component.css_ejemplo_de_diseño_de_botón.png "votings.component.css ejemplo de diseño de botón")
 
 -	Votings.component.ts: Se trata del archivo TypeScript que contiene la lógica del componente. Podemos observar su código en las Imágenes 4 y 5.
 
-![Imagen 4](Imagenes/votings.component.ts_1 "votings.component.ts 1")
-![Imagen 5](Imagenes/votings.component.ts_2 "votings.component.ts 2")
+![Imagen 4](Imagenes/votings.component.ts_1.png "votings.component.ts 1")
+![Imagen 5](Imagenes/votings.component.ts_2.png "votings.component.ts 2")
 
 -	Votings.component.spect.ts : Es el test del componente, que comprobará si todo funciona como ha sido previsto.
 
-![Imagen 6](Imagenes/votings.component.spect.ts ejemplo_de_test "votings.component.spect.ts ejemplo_de_test")
+![Imagen 6](Imagenes/votings.component.spect.ts ejemplo_de_test.png "votings.component.spect.ts ejemplo_de_test")
 
 La funcionalidad de esta parte del proyecto es la siguiente:  
 
