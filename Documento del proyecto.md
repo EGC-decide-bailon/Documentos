@@ -99,6 +99,28 @@ La funcionalidad de esta parte del proyecto es la siguiente:
 -	Poder acceder a una votación una vez el usuario haya iniciado sesión.
 -	Una vez elegida la votación, que el usuario puede participar en la misma.
 
+
+
+#### Bot de discord.
+
+Comenzaremos analizando la estructura del proyecto.
+
+![Imagen 6](Imagenes/BotImages/estructuraProyecto.png "Estructura del proyecto")
+
+En la imágen superior podemos ver:
+    - README.md que da una explicación genereal del funcionamiento del bot.
+    - Images que es una carpeta donde se depositan las imágenes que se muestran en el README.md
+    - Ficheros de configuración para el despliegue en heroku:
+        - Procfile, donde se expecifica que queremos un "worker"(una instancia del bot) y no un sistema web, tambien indicamos el idioma en el que se debe ejecutar, en este caso python, y donde está el archivo de arranque, en este caso bot.py.
+
+        ![Imagen 7](Imagenes/BotImages/procfile.png "Estructura del proyecto")
+
+        - requirements.txt, en el se explican 
+
+        ![Imagen 8](Imagenes/BotImages/requirements.png "Estructura del proyecto")
+
+
+
 ## Visión global del proceso de desarrollo
 
 En esta sección proporcionaremos una visión general del proceso que hemos seguido a lo largo del desarrollo del proyecto.
