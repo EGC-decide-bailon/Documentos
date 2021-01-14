@@ -108,16 +108,25 @@ Comenzaremos analizando la estructura del proyecto.
 ![Imagen 6](Imagenes/BotImages/estructuraProyecto.png "Estructura del proyecto")
 
 En la imágen superior podemos ver:
-    - README.md que da una explicación genereal del funcionamiento del bot.
-    - Images que es una carpeta donde se depositan las imágenes que se muestran en el README.md
-    - Ficheros de configuración para el despliegue en heroku:
-        - Procfile, donde se expecifica que queremos un "worker"(una instancia del bot) y no un sistema web, tambien indicamos el idioma en el que se debe ejecutar, en este caso python, y donde está el archivo de arranque, en este caso bot.py.
+- README.md que da una explicación genereal del funcionamiento del bot.
+- Images que es una carpeta donde se depositan las imágenes que se muestran en el README.md
+- Ficheros de configuración para el despliegue en heroku:
+- Procfile, donde se expecifica que queremos un "worker"(una instancia del bot) y no un sistema web, tambien indicamos el idioma en el que se debe ejecutar, en este caso python, y donde está el archivo de arranque, en este caso bot.py.
 
-        ![Imagen 7](Imagenes/BotImages/procfile.png "Estructura del proyecto")
+ ![Imagen 7](Imagenes/BotImages/procfile.png "Estructura del proyecto")
 
-        - requirements.txt, en el se explican 
+- requirements.txt, en el se indican a heroku cuales van a ser las dependencias, es decir, las librerias necesearias para el funcionamiento del bot.
 
-        ![Imagen 8](Imagenes/BotImages/requirements.png "Estructura del proyecto")
+![Imagen 9](Imagenes/BotImages/requirements.png "Requirements")
+    
+- Un fichero para el depliegue en travis : travis.yml. En el usamos los siguientes etiquetas:
+            - languaje -> indica el lenguaje que usará travis.
+            - python -> indica la versión de python que usaremos.
+            - install -> indicaremos que es necesario descargar para la correcta ejecución en el entorno virtual de Travis.
+            - script -> indicaremos que script tiene que ejecutar, en este caso el fichero de test (este comando es posible gracias a la librería unitest).
+            - deploy - indica opciones referentes al despliegue, en este caso con provider le decimos que lo queremos desplegar con heroku y con on y all_branches le forzamos a que lo haga con todos los cambios.
+
+![Imagen 10](Imagenes/BotImages/travis.png "Travis")
 
 
 
