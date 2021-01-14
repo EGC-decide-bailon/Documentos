@@ -154,7 +154,7 @@ En la imágen superior podemos ver:
     
     - Líneas 276 y 277. **Main**. En estas lineas, tan solo se le indica al bot que comience a funcionar mediante la función .run() pasandole como parametro el token del bot suministrado por Discord.
 
-A modo de resumen,la funcionalidad de esta parte del proyecto es la siguiente:  
+A modo de resumen,la funcionalidad implementada en esta parte del proyecto es la siguiente:  
 - Permitir iniciar sesión al usuario mediante el nombre de este y una contraseña.
 - Listar todas las votaciones posibles, una vez el usuario se haya logeado.
 - Poder acceder a una votación en detalle, una vez el usuario se haya logeado.
