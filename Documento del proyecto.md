@@ -160,8 +160,38 @@ A modo de resumen,la funcionalidad implementada en esta parte del proyecto es la
 - Poder acceder a una votación en detalle, una vez el usuario se haya logeado.
 - Permitir al usuario votar,una vez registrado.
 
+#### Bot de Telegram.
 
+Esta es la estructura básica del bot:
 
+![Imagen 11](Imagenes/BotTelegram/estructuraProyecto.png "Estructura del proyecto")
+
+Los puntos más remarcables y distintos a los demás bots son:
+ - Bot es una carpeta con todo el código esencial del bot.
+ - Configs contiene toda la conmfiguración necesaria para conectar el bot a las distintas plataformas.
+ - Util tiene un par de clases de utilidad como código para el parseo de los datos recuperados y la definición de variables globales.
+ - Main es el archivo base del bot, con la definición de la estructura y métodos del bot. Este archivo es el que hay que lanzar para iniciar el funcionamiento.
+
+Los demás archivos, menos por mínimas diferencias de configuración, es igual al bot anterior.
+
+Dentro del bot encontramos varias funcionalidades que trabajan a modo de pipeline. En orden, los métodos serían:
+
+![Imagen 12](Imagenes/BotTelegram/start.png "Start")
+
+- Aquí definimos el método inicial del bot. Asignamos el comando `start` para iniciar la conversación.
+
+![Imagen 13](Imagenes/BotTelegram/start2.png "Start2")
+
+- Creamos con `boton_login = [['Login']]` y `reply_markup=ReplyKeyboardMarkup(boton_login, one_time_keyboard=True)` un botón de login aparte de darle la bienvenida al usuario.
+ 
+![Imagen 14](Imagenes/BotTelegram/login.png "Login")
+
+- El primer método que vemos, es el mensaje pidiendo el usuario y contraseña con un formato predefinido.
+
+- El siguiente se compone de varias partes:
+  + La recuperación de los datos.
+  + Creamos los credenciales con el formato adecuado para enviarlo a la aplicación principal.
+  + Comprobamos que la llamada con los credenciales son correctos antes de pasar a la siguiente fase, si no, volvemos a insistir en los credenciales.
 
 ## Visión global del proceso de desarrollo
 
