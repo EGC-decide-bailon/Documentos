@@ -128,6 +128,26 @@ En la imágen superior podemos ver:
 
 ![Imagen 10](Imagenes/BotImages/travis.png "Travis")
 
+- Como ultimo fichero nos encontramos con el bot.py y config.py, el segundo simplemente son variables globales de configuaración. En lo referente a bot.py ahí es donde sucede la magia. No se va ha realizar una fotografía del código completo, iremos guiandonos por las lineas del fichero y nombres de métodos. Para acceder al código clique [aquí]:https://github.com/EGC-decide-bailon/bot-dc/blob/main/bot.py .Comenzaremos viendo las distintas partes del fichero:
+
+    - Líneas 1 a 7. **Imports**. No hay nada demasiado interesante, importamos las librerías de referentes a la API de Discord, la librería asyncio para poder trabajar de forma asincrona, y la librería request para hacer peticiones. El resto de imports son para dar utilidad.
+
+    - Líneas de la 9 a la 18 y de la 214 a la 219. **Basics**. Se inicializan las partes básicas para el funcionamiento del bot(lineas 9-18) y se crea un evento para que podamos ver en consola que funciona del modo esperado.
+
+    - Líneas de la 22 a las 208.**BotCommands**. En esta sección se encuentran definido los comandos que ejecutará el bot, todos han sido comentados de forma correcta, explicando la funcionalidad del método y los inputs en caso de que sean necesarios. Por ello a continuación dejaremos una lista de comandos y lineas en las que se empiezan y después detallaremos algunos aspectos clave.
+        - ##### Lista de comandos
+            - 37 -> info
+            - 52 -> loginAsUser
+            - 88 -> votings
+            - 128 -> voting
+            - 161 -> vote
+            - 200 -> clean
+        - ##### Conceptos claves
+            - Una idea de las ideas detras del funcionamiento del bot es la seguridad en la votación, lo normal es que se llame al bot en un canal, y se interactue con el ahí, sin embargo este bot manda un mensaje directo al usuario que le invoque en un canal públíco. Esta t
+
+
+
+
 
 
 ## Visión global del proceso de desarrollo
