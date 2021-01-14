@@ -148,9 +148,9 @@ En la imágen superior podemos ver:
     - Líneas de la 224 a las 272. **Utiles**. En esta sección se encuentran definido los comandos que sirven de apoyo a los principales y permiten hacer más comprensible y modular el código. Todos han sido comentados de forma correcta, explicando la funcionalidad del método y los inputs en caso de que sean necesarios igual que en los anteriores. Por ello a continuación dejaremos una lista de comandos y lineas en las que se empiezan.
 
        - ##### Lista de comandos
-            - 228 -> info
-            - 240 -> loginAsUser
-            - 255 -> votings
+            - 228 -> getUser
+            - 240 -> saveVoteDate
+            - 255 -> parseVotings
     
     - Líneas 276 y 277. **Main**. En estas lineas, tan solo se le indica al bot que comience a funcionar mediante la función .run() pasandole como parametro el token del bot suministrado por Discord.
 
