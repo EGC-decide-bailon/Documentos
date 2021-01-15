@@ -64,7 +64,7 @@ Al tratarse de un proyecto que realizaremos en solitario (single), este apartado
 A lo largo de este apartado, explicaremos el sistema desarrollado desde un punto de vista funcional y arquitectónico. Procuraremos realizar una descripción clara de la funcionalidad técnicas de los componentes que intervienen. 
 Para el desarrollo de nuestro proyecto partimos de Decide, un sistema de voto en formato digital compuesta por una serie de módulos o subsistemas, cada uno de estos conectados mediante la API.
 Decide-Single-Bailón cabina se encarga de uno de los módulos mencionados anteriormente, en concreto “Cabina de votación”, una interfaz para votar. Este subsistema se encarga de mostrar la interfaz de voto de una votación en concreto, y permite al votante votar de la forma más sencilla posible.
-El proyecto consiste en el desarrollo en Angular de esta interfaz, aportando así una interfaz diferente a la ya implementada en Decide. Por otro lado, aportaremos el desarrollo de dos bots de votación que permitirán la votación de decide mediante los canales de texto de discord.
+El proyecto consiste en el desarrollo en Angular de esta interfaz, aportando así una interfaz diferente a la ya implementada en Decide. Por otro lado, aportaremos el desarrollo de cuatro bots de votación que permitirán la votación de decide mediante diversas plataformas (Discord, Telegram, Slack y Line).
 Ambas partes del proyecto, tanto la interfaz de en Angular como los bots se comunicarán con Decide mediante llamadas a su API para poder realizar las votaciones. 
 A continuación, se realizará una explicación más exhaustiva de cada parte del proyecto.
 
@@ -192,6 +192,46 @@ Dentro del bot encontramos varias funcionalidades que trabajan a modo de pipelin
   + La recuperación de los datos.
   + Creamos los credenciales con el formato adecuado para enviarlo a la aplicación principal.
   + Comprobamos que la llamada con los credenciales son correctos antes de pasar a la siguiente fase, si no, volvemos a insistir en los credenciales.
+
+![Imagen 15](Imagenes/BotTelegram/votings.png "votings")
+
+El siguiente paso sería recuperar todas las votaciones existentes y mostrarlas para que el usuario pueda decidir qué hacer.
+
+- Con la primera parte del método, obtemenos la lista de votaciones totales del sistema.
+
+- Cogemos esos objetos y los parseamos y filtramos para coger sólo las votaciones activas.
+
+- Por último y usando los mismos métodos que para crear el botón anterior, creamos uno para cada una de las votaciones.
+
+![Imagen 16](Imagenes/BotTelegram/voting.png "voting")
+
+Una vez seleccionado la votación, tendríamos lo siguiente:
+
+- Con la primera parte, recuperamos el id de la votación elegida.
+
+- Después, creamos un botón para cada opción, con el id y la opción a escoger.
+
+- Por último, recuperamos la descripción de la votación para mostrarla por chat junto a los botones creados por cada opción.
+
+En este punto, usamos la misma llamada que con el anterior, ya que si la url la buscamos sin ningún campo id, recuperamos todos los votos y nos ahorramos hacer un método propio para ello.
+
+![Imagen 17](Imagenes/BotTelegram/save.png "save")
+
+Ya por último, tenemos que guardar ese voto según nuestro estándar:
+
+- Priemro recuperamos el id de la opción recogida.
+
+- Recuperamos el usuario para poder asignarle el voto a él.
+
+- Comparamos la opción para poder adaptar la respuesta a nuestra solución, poniendo un 1 a la opción cogida y un 0 a la que no.
+
+- Guardamos todos los valores necesarios en el formato correspondiente y lo mandamos a la aplicación con su llamada correspondiente.
+
+- Por último y para finalizar el proceso, mandamos un mensaje informando que han realizado la votación correctamente. Con el método `ConversationHandler.END` terminamos el pipeline y estará listo para empezar de nuevo el proceso completo.
+
+Todos los comandos junto al manual de uso, se encuentra en el propio README del bot. Las llamadas y parseos que se ven durante el desarrollo del bot, son iguales a los de los demás bots desarrollados y definidos en esta documentación.
+
+La idea del bot es usarlo de forma privada, ya que en un punto del proceso necesitamos pasarle por escrito las credenciales de nuestro usuario. Debido a la API actual, no podemos borrar ese mensaje sin borrar toda la conversación existente, por lo que si se usa en un grupo, es responsabilidad del usuario el pasar las credenciales por el chat. Una vez terminado el proceso, podemos usar como usuarios, una opción de la aplicación que permite el borrado de los mensajes mandados por ambos y así poder mantener la privacidad de nuestro usuario y contraseña de Decide.
 
 ## Visión global del proceso de desarrollo
 
