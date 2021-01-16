@@ -2,10 +2,6 @@
 
 # Decide-Single-Bailón- Cabina
 
-
-
-
-
 - Grupo: 2.
 - ID de opera: - 
 -	Curso escolar: 2020/2021
@@ -424,7 +420,6 @@ Heroku es un sistema web que permite el despliegue de aplicaciones de forma grat
 
 ## Gestión de incidencias
 
-<<<<<<< HEAD
 A la hora de tratar las incidencias en un equipo de trabajo con multiples proyectos que desarrollan simultáneamente es un desafió de magnitudes estelares por lo que hemos tratado un plan de gestión de incidencias que no es nada más que una serie de pasos a seguir hasta resolver la incidencia.
 
 1.  Cuando una incidencia es encontrada se crea una issue dentro del tablero de la organization, esta issue es la central de comunicación sobre la incidencia. Debe de quedar reflejado cada acción que se ha realizado para tratarla.
@@ -448,7 +443,8 @@ Otra issue con buena gestión https://github.com/EGC-decide-bailon/angular-decid
 2. Carlos detectó un problema a la hora de tratar la mejora funcional.
 3. Dani respondió con una posible solución y la creacion de una issue para tratar la nueva incidencia que surgió al trabajar en otra.
 4. La incidencia continua en https://github.com/EGC-decide-bailon/angular-decide-bailon/issues/11 donde se pegan intercambio de correos entre los alumnos y el profesorado.
-=======
+
+
 ## Gestión de código fuente
 
 En este apartado se explicarán los procesos, técnicas y herramientas para la gestión del código del proyecto. 
@@ -510,5 +506,4 @@ Lo explicado anteriormente se puede ver reflejado en las siguientes imágenes:
 Las palabras clave para el nombrado de los commits , tanto referente a los repositorios de los bots como para angular-decide-bailon, será la acción : creado/añadido, editado ,eliminado, arreglado/corregido,  de la clase o componente al que le afecte.
 Esto se ve reflejado en el proyecto en las siguientes imágenes: 
 
->>>>>>> b87b4d18543c3556f36a89a0d06d1f0d6a0c7d67
 
