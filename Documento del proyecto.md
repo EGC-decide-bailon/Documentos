@@ -385,7 +385,7 @@ redirige al método correspondiente. En caso de no reconocer el comando se comun
 
 - Lineas 187 a 188. Cuando no se reconoce un comando, se envía al cliente un mensaje recordándole la existencia del comando __/commands_list__, en caso de que quisiese obtener un listado de los comandos disponibles.
 
--- Líneas 183 a 200. Método para parsear el objeto devuelto por Decide y transformarlo en una lista de votaciones. Únicamente se seleccionan votaciones que hayan empezado pero no hayan acabado aún.
+- Líneas 183 a 200. Método para parsear el objeto devuelto por Decide y transformarlo en una lista de votaciones. Únicamente se seleccionan votaciones que hayan empezado pero no hayan acabado aún.
 
 ## Visión global del proceso de desarrollo
 
