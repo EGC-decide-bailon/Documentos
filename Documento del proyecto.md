@@ -329,6 +329,34 @@ Todos los comandos junto al manual de uso, se encuentra en el propio README del 
 
 La idea del bot es usarlo de forma privada, ya que en un punto del proceso necesitamos pasarle por escrito las credenciales de nuestro usuario. Debido a la API actual, no podemos borrar ese mensaje sin borrar toda la conversación existente, por lo que si se usa en un grupo, es responsabilidad del usuario el pasar las credenciales por el chat. Una vez terminado el proceso, podemos usar como usuarios, una opción de la aplicación que permite el borrado de los mensajes mandados por ambos y así poder mantener la privacidad de nuestro usuario y contraseña de Decide.
 
+### Bot de slack
+
+La estructura del proyecto es similar a los otros bots. Destacaré los archivos más importantes y que ya han sido explicados en la descripción de los otros bots.
+- Readme
+- Procfile
+- requirementes.txt donde en mi caso, ha sido necesario añadir las dependecias de slack, flask y gunicorn
+- .travis.yml
+- config.py donde se guardan las variables globales que estan almacenadas en heroku
+- bot.py
+
+En este último es donde se encuentra todo el código del bot. A continuación describiré las partes más interesantes de todo el desarrollo del bot.
+
+- Línea 10. Creamos la aplicación web con Flask(__name__)
+
+- Líneas 17 a 28. /info-comandos Aquí se encuentra el primero método del bot. Es un método bastante sencillo que simplemente envía por chat privado al usuario que ha introducido el comando los diferentes comandos que tiene el bot. Para ello, utilizamos los métodos que nos proporciona la libreria de slack para recibir los datos, y a partir de ahí, coger la id del usuario para abrir el chat con él.
+
+- Líneas 30 a 59. /login-decide En este método es necesario coger la información que el usuario nos manda desde slack y hacer un split, para poder tratar los datos que necesitamos. Este es el primer comando donde se realiza una petición al decide que tenemos desplegado en heroku con los datos que hemos recibido, pero para ello, se realiza la petición dentro de un try/catch, de forma que podamos devolver al usuario un mensaje de error en caso de que no hubiese introducido bien las credenciales. En este caso, se introducide además los datos recogidos en la petición.
+
+- Líneas 60 a 92. /votaciones-disponibles Este método es parecido al anterior, ya que también realizamos una petición a decide, pero esta vez con el requisito de haber logueado antes, ya que para que nos acepte la petición a la api, es necesario mandar el token de haber iniciado sesión. Para este método además utilizamos un método auxiliar llamado cogerVotaciones que veremos a continuación.
+
+- Líneas 94 a 103. En este método auxiliar básicamente cogemos la respuesta nos ha devuelto decide y sacamos las diferentes votaciones disponibles. Una vez las tenemos, filtramos las votaciones que están disponibles y que por tanto, tienen fecha de fin.
+
+- Líneas 106 a 136. /detalles-votacion En este caso, recibimos como parámetro el id de la votación que queremos ver en detalle, y como en los anteriores, se hace una petición a decide con el parámetro recibido para que nos devuelva únicamente la encuesta que hemos solicitado.
+
+- Líneas 138 a 179. /votar-decide Realizamos los mismos pasos que en los anteriores métodos, pero controlando las excepciones de no haber iniciado sesión, o no haber introducido un id de votación o respuesta correctos. Para realizar las dos peticiones lo hacemos mediante dos métodos auxiliares que veremos a continuación.
+
+- Lineas 181 a 197. Se realizan las 2 peticiones a la api de decide.
+
 ## Visión global del proceso de desarrollo
 
 En esta sección proporcionaremos una visión general del proceso que hemos seguido a lo largo del desarrollo del proyecto.
