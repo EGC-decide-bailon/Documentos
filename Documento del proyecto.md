@@ -424,6 +424,7 @@ Heroku es un sistema web que permite el despliegue de aplicaciones de forma grat
 
 ## Gestión de incidencias
 
+<<<<<<< HEAD
 A la hora de tratar las incidencias en un equipo de trabajo con multiples proyectos que desarrollan simultáneamente es un desafió de magnitudes estelares por lo que hemos tratado un plan de gestión de incidencias que no es nada más que una serie de pasos a seguir hasta resolver la incidencia.
 
 1.  Cuando una incidencia es encontrada se crea una issue dentro del tablero de la organization, esta issue es la central de comunicación sobre la incidencia. Debe de quedar reflejado cada acción que se ha realizado para tratarla.
@@ -447,4 +448,67 @@ Otra issue con buena gestión https://github.com/EGC-decide-bailon/angular-decid
 2. Carlos detectó un problema a la hora de tratar la mejora funcional.
 3. Dani respondió con una posible solución y la creacion de una issue para tratar la nueva incidencia que surgió al trabajar en otra.
 4. La incidencia continua en https://github.com/EGC-decide-bailon/angular-decide-bailon/issues/11 donde se pegan intercambio de correos entre los alumnos y el profesorado.
+=======
+## Gestión de código fuente
+
+En este apartado se explicarán los procesos, técnicas y herramientas para la gestión del código del proyecto. 
+
+Para abordar este punto, debemos tener en cuenta las funcionalidades que se deben implementar. Trataremos la creación de cuatro bots, y la interfaz de la cabina en angular. Al tratarse de puntos independientes y para facilitar su desarrollo optaremos por la herramienta de gestión de código fuente GitHub. 
+
+GitHub es una herramienta que permite alojar proyectos que se basan en el sistema de versionado de Git. La hemos elegido por varios motivos:
+- Porque el proyecto proporcionado por el profesorado se alojaba allí.
+- Por nuestro uso previo de dicho sistema y, por lo tanto, la familiarización con el mismo por parte del equipo de desarrollo.
+- Nos ofrece la capacidad de crear una organización donde guardar varios repositorios y por lo tanto, trabajar de forma paralela en cada uno de los subproyectos.
+- Gracias al punto anterior, cada uno de los subproyectos se puede desarrollar en lenguajes y tecnologías diferentes sin efectos entre sí.
+- Permite crear tableros Kanban, donde crear, asignar y organizar las tareas que componen a cada uno de los incrementos funcionales.
+- Gracias al punto anterior, permite medir el progreso del proyecto mediante el seguimiento de las tareas creadas.
+- Permite crear equipos de desarrollo, dando acceso a los participantes de dicho equipo a un chat privado donde la comunicación es directa y pueden resolver dudas.
+- Travis y Heroku son compatibles con esta plataforma, por lo que podremos analizar los errores en el código y desplegarlo en cualquier momento.
+
+Para nuestro caso concreto, hemos decidido crear una organización cuyo nombre es EGC-decide-bailon (https://github.com/EGC-decide-bailon), que se compone de una serie de repositorios, cada uno dedicado a un incremento funcional. En concreto se han creado los siguientes: 
+
+- bot-line, dedicado al desarrollo del bot decide en Line. (https://github.com/EGC-decide-bailon/bot-line)
+
+- bot-dc, para el desarrollo del bot orientado a la aplicación Discord.(https://github.com/EGC-decide-bailon/bot-dc)
+
+- bot-slack, dedicado al desarrollo del bot decide para Slack.
+(https://github.com/EGC-decide-bailon/bot-slack)
+
+- bot-telegram, para el desarrollo del bot en Telegram.
+(https://github.com/EGC-decide-bailon/bot-telegram)
+
+- angular-decide-bailon, para el el desarrollo de la interfaz de la cábina con angular.(https://github.com/EGC-decide-bailon/angular-decide-bailon)
+
+- Documentos, donde residirán todos los documentos pertinentes a este proyecto.
+(https://github.com/EGC-decide-bailon/Documentos)
+
+- decide, el proyecto base de decide, facilitado por el profesorado.
+(https://github.com/EGC-decide-bailon/decide)
+
+
+
+Antes de empezar el desarrollo general de cada uno de los incrementos funcionales crearemos las diferentes issues en el tablero Kanban proporcionado por GitHub, asignándole a cada una un subproyecto/repositorio. Cada miembro del equipo se encargará de uno de los incrementos funcionales, excepto para angular-decide-bailon, de la que se encargarán hasta dos miembros debido a su complejidad. 
+
+Concretamente, al crear la issue, se le proporcionará una etiqueta dependiendo del tipo de tarea que sea, en el caso de ser una tarea de funcionalidad llevará la etiqueta “enhancement”, si de lo contrario se trata de una tarea de desarrollo de documentación, llevará la etiquieta “documentation”, por último, si se trata de un error que debe ser corregido llevará la etiqueta de “bug”. Posteriormente, se le asignará a la issue un grado de prioridad, y se depositará en una de las columnas que indiquen esa información : “Critical priority”, “High priority”, y “Low priority”. Una vez situada en una de estas tres columnas la issue, se le asignará a un miembro del equipo para que la lleve a cabo. Si la issue se ha iniciado se colocará en la columna “In progress”, si se ha finalizado se colocará en”Done”, y si además se ha revisado y aceptado, pasará a “Closed”. 
+
+Aquí se adjuntan unas capturas de pantalla que demuestran su utilización.
+
+
+Dentro de la organización hemos creado dos equipos, el equipo encargado de los bots, y el equipo encargado de angular. El primer equipo seguirá una política menos estricta, ya que cada uno de los componentes se encargará de un bot de forma individual, por lo que será el único que edite el código del repositorio asignado al desarrollo de su bot. En los repositorios de bot, se harán los commits y cambios directamente en la rama master. La política a seguir para realizar los commits para comprobar que el código desarrollado hasta el momento se ha realizado correctamente, excepto para los casos en los que se tengan que probar o editar ficheros de cara al despliegue de la aplicación, en ese caso se podrán realizar los commits directamente. 
+
+Sin embargo, el segundo llevará una política algo más concreta, ya que dos personas trabajarán sobre el mismo incremento funcional por lo que tendrán acceso al mismo repositorio y deberán trabajar sobre el mismo código.
+
+
+
+
+En el caso de angular-decide-bailon, utilizaremos como técnica “Modelo vista controlador”. 
+Referente al repositorio, se creará una branch según la funcionalidad a realizar con el siguiente nombre “feature/palabra-clave”, siendo la palabra clave booth,voting,votings,etc… A la hora de commitear los cambios se realizarán al menos uno al día hasta tener una versión definitiva sin errores. Una vez se haya realizado la funcionalidad en su rama correctamente, se realizará un pull request que deberá ser aprobado por Travis y por la revisión de otro compañero de proyecto. Una vez mergeada la rama sin errores se eliminará y la issue se dará por finalizada. 
+
+Lo explicado anteriormente se puede ver reflejado en las siguientes imágenes:
+
+
+Las palabras clave para el nombrado de los commits , tanto referente a los repositorios de los bots como para angular-decide-bailon, será la acción : creado/añadido, editado ,eliminado, arreglado/corregido,  de la clase o componente al que le afecte.
+Esto se ve reflejado en el proyecto en las siguientes imágenes: 
+
+>>>>>>> b87b4d18543c3556f36a89a0d06d1f0d6a0c7d67
 
