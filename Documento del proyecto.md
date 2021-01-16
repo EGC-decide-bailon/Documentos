@@ -70,36 +70,136 @@ A continuación, se realizará una explicación más exhaustiva de cada parte de
 
 #### Interfaz en Angular.
 
-Para poder crear la interfaz, deberemos crear un componente en Angular con esa intención.
-Este componente está compuesto por un archivo que contendrá el Template (.html), un archivo que contendrá la lógica (.ts),
-y un archivo para el css donde se diseñará la apariencia de la interfaz. 
-Concretamente, hemos creado el componente de la cabina , denominado “votings” con los siguientes archivos :
+Angular es un framework para la creacion de webs de una sola pagina basada en componentes.
+Un componente necesita una carpeta con 4 archivos principales, un *.html* con la estructura, un archivo *.ts* que contendrá toda la logica relacionada con el template, un archivo *.css* con los estilos.
+La gran parte de los documentos relacionados con los estilos estarán vacios, puesto que usaremos el framework bootstrap para todos los estilos.
 
--	Votings.component.html : que contiene el template de la interfaz creada. En este archivo hemos utilizado el elemento *ngIf propio en el Angular en el form, ya que la votación solo se puede realizar si el usuario ha iniciado sesión, de esta forma y utilizando este elemento no aseguramos de que en caso de que el usuario no haya iniciado sesión se le presente una vista donde pueda hacerlo (Imagen1) y a continuación proceda a votar, o en el caso de que si esté loggeada pueda acceder directamente a la votación (Imagen 2). 
+Tratamos de utilizar el modelo vista controlador para la produccion de esta aplicación concentrando todas las peticiones API al backend desde archivos denominados *.services*, Y almacenando los modelos que recibiamos en su respectivo contendor.
 
-![Imagen 1](Imagenes/votings.component.html_sign_in.png "votings.component.html sign in")
-![Imagen 2](Imagenes/votings.component.html_vote.png "votings.component.html vote")
+**Modelos**
 
--	Votings.component.css: En el archivo html se utiliza Bootstrap, aún así decidimos utilizar botones diseñados mediante css para darle un toque más original a la interfaz de de la cabina.
+Almacenan la estructura de los objetos recibidos desde decide. Clases etiquetadas con una librería para analizar cadenas json (*typedjson*)
+-   *voting.model.ts* : Crearemos todas las clases correspondientes a la la estructuras de las votaciones. Todas las clases y atributos están etiquetadas para trabajar con objetos json.
 
-![Imagen 3](Imagenes/votings.component.css_ejemplo_de_diseño_de_botón.png "votings.component.css ejemplo de diseño de botón")
+```typescript
+    @jsonObject
+    export class Voting {
+        @jsonMember({constructor: Number})
+        id: number;
+        @jsonMember({constructor: String})
+        name: string;
+        @jsonMember({constructor: String})
+        desc: string;
+        @jsonMember({constructor: Question})
+        question: Question;
+        @jsonMember({constructor: Date})
+        // tslint:disable-next-line:variable-name
+        start_date: Date;
+        @jsonMember({constructor: Date})
+        // tslint:disable-next-line:variable-name
+        end_date: Date;
+        @jsonMember({constructor: PubKey})
+        // tslint:disable-next-line:variable-name
+        pub_key: PubKey;
+        @jsonArrayMember(Auth)
+        auths: Auth[];
+        @jsonMember({constructor: Object})
+        tally: null;
+        @jsonMember({constructor: Object})
+        postproc: null;
+    }
+```
 
--	Votings.component.ts: Se trata del archivo TypeScript que contiene la lógica del componente. Podemos observar su código en las Imágenes 4 y 5.
+**Servicios**
 
-![Imagen 4](Imagenes/votings.component.ts_1.png "votings.component.ts 1")
-![Imagen 5](Imagenes/votings.component.ts_2.png "votings.component.ts 2")
+Aquí se concentra todo el código relacionado con el backend, estos archivos proporcionan information relevante a los componentes para que la aplicación funcione correctamente.
+Desde llamadas API al framework de python que contiene decide hasta la máquina de estados de login del usuario y el almacenamiento de sus credenciales.
+-   *authentication.service.ts* : Gestiona el login y logout del usuario.
+-   *voting.service.ts* : Realiza todas las peticiones relacionadas con las votaciones y el usuario. También contiene el código para transformar de json a objeto typescript.
 
--	Votings.component.spect.ts : Es el test del componente, que comprobará si todo funciona como ha sido previsto.
+```angularjs
+    getVotings(): Observable<object> {
+        return this.http.get(`${environment.apiUrl}gateway/voting/`);
+    }
 
-![Imagen 6](Imagenes/votings.component.spect.ts ejemplo_de_test.png "votings.component.spect.ts ejemplo_de_test")
+    parseVotings(votings: any): Voting[] {
+        const res: Voting[] = [];
+        votings.forEach(v => {
+            res.push(v.parseVoting);
+        });
+        return res;
+    }
+```
+En este codigo vemos como se realizan las llamadas a la api y como son transformadas a objetos typescript
+
+**Componentes**
+
+La aplicación muestra en todo momento el header, la salida de enrutamiento y el footer. La salida de enrutamiento es una herramienta que nos ofrece angular y nos permite cambiar el dom en tiempo de ejecucion.
+Veremos el codigo de las votaciones como ejemplo:
+
+-	*voting.component.html* : que contiene el template de la interfaz creada
+
+```angular2html
+    <div id="app-booth" class="principal">
+        <h1>{{ votingId }} - {{ votingName }}</h1>
+        <div *ngIf="logged">
+          <h2>{{ votingQuestionDesc }}</h2>
+          <form [formGroup]="votingForm" (ngSubmit)="onSubmitVote($event)" novalidate>
+            <div class="custom-control custom-radio" >
+              <input type="radio" class="form-check-input" id="si" name="option" value="1">
+              <label for="si" class="form-check-label" >1. Si</label>
+            </div>
+            <div class="custom-control custom-radio" >
+              <input type="radio" class="form-check-input" id="no" name="option" value="0">
+              <label for="no" class="form-check-label" >2. No</label>
+            </div>
+            <div *ngIf="isSubmitted && myForm.invalid">
+              <p>Por favor seleccione una opción</p>
+           </div>
+            <div class="boton">
+              <button class="button button-3" type="submit"> Vota </button>
+            </div>
+          </form>
+        </div>
+      <div *ngIf="!logged">
+        <h1>No has iniciado sesión</h1>
+      </div>
+    </div>
+```
+
+Como podemos ver usamos la directiva ngIf, esta oculta o muestra parte del html dependiendo del boolean que reciba
+
+-	voting.component.css : Tenemos angular configurado para trabajar con bootstrap, asi que no es necesario añadir estilos en los documentos *.css*
+
+-	voting.component.ts: Se trata del archivo TypeScript que contiene la lógica del componente.
+
+```typescript
+    ngOnInit(): void {
+        this.logged = !this.authService.isLogged;
+        const id = +this.route.snapshot.params.id - 1;
+        this.votingService.getVoting(id).subscribe((res) => {
+            this.voting = TypedJSON.parse(res[id], Voting);
+        }, error => {
+            console.log(error);
+        });
+    }
+```
+Esta funcion se ejecuta cuando el componente voting es cargado, aquí se pide la consulta de la votacion que es parseada de json a TS gracias a la libreria *typedjson*
+
+-	voting.component.spect.ts : Es el test del componente.
+
+```typescript
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+```
+Un codigo muy sencillo que comprueba si el componente se crea correctamente.
 
 La funcionalidad de esta parte del proyecto es la siguiente:  
 
 -	Permitir iniciar sesión al usuario mediante el nombre de este y una contraseña.
--	Poder acceder a una votación una vez el usuario haya iniciado sesión.
--	Una vez elegida la votación, que el usuario puede participar en la misma.
-
-
+-	Poder acceder a una lista de votaciones permitidas para el usuario una vez haya iniciado sesión.
+-	Cuando se escoge la votación, el usuario puede participar en la misma.
 
 #### Bot de discord.
 
