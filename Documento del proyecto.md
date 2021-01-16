@@ -117,7 +117,7 @@ Desde llamadas API al framework de python que contiene decide hasta la máquina 
 -   *authentication.service.ts* : Gestiona el login y logout del usuario.
 -   *voting.service.ts* : Realiza todas las peticiones relacionadas con las votaciones y el usuario. También contiene el código para transformar de json a objeto typescript.
 
-```angularjs
+```typescript
     getVotings(): Observable<object> {
         return this.http.get(`${environment.apiUrl}gateway/voting/`);
     }
@@ -139,7 +139,7 @@ Veremos el codigo de las votaciones como ejemplo:
 
 -	*voting.component.html* : que contiene el template de la interfaz creada
 
-```angular2html
+```html
     <div id="app-booth" class="principal">
         <h1>{{ votingId }} - {{ votingName }}</h1>
         <div *ngIf="logged">
@@ -424,4 +424,27 @@ Heroku es un sistema web que permite el despliegue de aplicaciones de forma grat
 
 ## Gestión de incidencias
 
+A la hora de tratar las incidencias en un equipo de trabajo con multiples proyectos que desarrollan simultáneamente es un desafió de magnitudes estelares por lo que hemos tratado un plan de gestión de incidencias que no es nada más que una serie de pasos a seguir hasta resolver la incidencia.
+
+1.  Cuando una incidencia es encontrada se crea una issue dentro del tablero de la organization, esta issue es la central de comunicación sobre la incidencia. Debe de quedar reflejado cada acción que se ha realizado para tratarla.
+    1. Esta issue debe de tener unas características de clasificación dependiendo de la incidencia que trate. Si es una mejora en la aplicación se le etiqueta con *enhancement*, si en cambio es una incidencia relacionada con un error se etiqueta con *bug*.
+    2. A la incidencia se les coloca una prioridad desde baja a crítica. Las incidencias critica, afecta e impide la continuidad del proyecto, por ejemplo un error en *decide-django*. Una incidencia alta involucra a varios proyectos simultáneos y se puede solicitar ayuda de otros equipo de desarrollo. Las incidencias de baja prioridad afectan a un único proyecto y pueden ser resueltas por una única persona sin ocasionar muchos inconvenientes.
+2.  Cuando un integrante comience a tratar la incidencia se le asigna la issue y se mueve a la sección en progreso.
+    1. Si se requiere de ayuda adicional por parte del equipo, se utilizan los comentarios de la issue para las comunicaciones.
+    2. Es posible que de una issue aparezcan nuevas incidencias.
+3.  Cuando la issue está en un estado muy avanzado y en fase de revisión se coloca en *done* a esperas de cerrarse cuando se apruebe y se añadan los cambios al proyecto.
+
+- - -
+Por ejemplo la issue https://github.com/EGC-decide-bailon/angular-decide-bailon/issues/24
+1. Antonio detectó un error en la documentación del proyecto en la sección de angular.
+2. Creó una incidencia en el proyecto de la organización con la información necesaria para cubrir la incidencia. Le asignó las etiquetas de bug y documentación, lo vinculó al repositorio de los documentos y asignó la tarea al equipo de angular. Por ultimo colocó la issue en baja prioridad.
+3. Carlos comunicó que realizaba la tarea y comunicó cuando la tenía finalizada, marcando el commit dónde se resolvió la incidencia para una mejor trazabilidad.
+4. Se coloca la issue como finalizada y se cierra. El tablero detecta el cierre de la issue y automáticamente la coloca en la sección de closed
+
+- - -
+Otra issue con buena gestión https://github.com/EGC-decide-bailon/angular-decide-bailon/issues/4
+1. Laura crea una issue de enhancement que fue asignada a Carlos.
+2. Carlos detectó un problema a la hora de tratar la mejora funcional.
+3. Dani respondió con una posible solución y la creacion de una issue para tratar la nueva incidencia que surgió al trabajar en otra.
+4. La incidencia continua en https://github.com/EGC-decide-bailon/angular-decide-bailon/issues/11 donde se pegan intercambio de correos entre los alumnos y el profesorado.
 
