@@ -329,12 +329,12 @@ Todos los comandos junto al manual de uso, se encuentra en el propio README del 
 
 La idea del bot es usarlo de forma privada, ya que en un punto del proceso necesitamos pasarle por escrito las credenciales de nuestro usuario. Debido a la API actual, no podemos borrar ese mensaje sin borrar toda la conversación existente, por lo que si se usa en un grupo, es responsabilidad del usuario el pasar las credenciales por el chat. Una vez terminado el proceso, podemos usar como usuarios, una opción de la aplicación que permite el borrado de los mensajes mandados por ambos y así poder mantener la privacidad de nuestro usuario y contraseña de Decide.
 
-### Bot de slack
+#### Bot de slack.
 
 La estructura del proyecto es similar a los otros bots. Destacaré los archivos más importantes y que ya han sido explicados en la descripción de los otros bots.
 - Readme
 - Procfile
-- requirementes.txt donde en mi caso, ha sido necesario añadir las dependecias de slack, flask y gunicorn
+- requirements.txt donde en mi caso, ha sido necesario añadir las dependecias de slack, flask y gunicorn
 - .travis.yml
 - config.py donde se guardan las variables globales que estan almacenadas en heroku
 - bot.py
@@ -356,6 +356,35 @@ En este último es donde se encuentra todo el código del bot. A continuación d
 - Líneas 138 a 179. /votar-decide Realizamos los mismos pasos que en los anteriores métodos, pero controlando las excepciones de no haber iniciado sesión, o no haber introducido un id de votación o respuesta correctos. Para realizar las dos peticiones lo hacemos mediante dos métodos auxiliares que veremos a continuación.
 
 - Lineas 181 a 197. Se realizan las 2 peticiones a la api de decide.
+
+####Bot de Line.
+Estructura del bot:
+- Readme
+- Procfile
+- requirements.txt conteniendo las dependecias de line, flask y gunicorn
+- .travis.yml
+- bot.py
+
+Describiré el código únicamente de la clase bot.py, ya que las demás clases son similares o idénticas a las de los otros bots.
+
+- Líneas 15 a 26. Seteamos los token necesarios para comunicarse con Line. Definimos la URL base para todas las peticiones a Decide.
+
+- Líneas 34 a 71. Método al que entran todas las consultas al bot. Aquí se identifica el comando introducido por el usuario y se
+redirige al método correspondiente. En caso de no reconocer el comando se comunica al cliente con un mensaje predeterminado.
+
+- Líneas 74 a 77. Comando __/commands_list__. Este método envía un mensaje al cliente con el listado completo de comandos que reconoce el sistema.
+
+- Líneas 79 a 101. Comando __/login__. Extraemos las credenciales proporcionadas por el cliente en su mensaje, y realizamos una llamada a la API de Decide para iniciar sesión en la plataforma. En caso de éxito, se guardará el token proporcionado por Decide en una variable local para futuras peticiones. En caso de error, se informará al cliente con un mensaje de que ha ocurrido un error.
+
+-Líneas 103 a 126. Comando __/info_votaciones__. Recuperamos el token del usuario logeado, y realizamos una llamada a la API de Decide para obtener la lista de votaciones en las que el usuario puede participar. Parseamos la respuesta recibida y tratamos la cadena para poder mostrar por pantalla un resultado ordenado y comprensible. En caso de error, se informará al cliente con un mensaje de que ha ocurrido un error.
+
+- Líneas 129 a 149. Comando __/info_votacion__. Este método es prácticamente idéntico al anterior. La única diferencia es que seleccionamos una votación en concreto del conjunto de votaciones recibido. Se muestran algunos detalles más de la votación en este método que en el anterior.
+
+- Líneas 151 a 185. Comando __/votar__. Recuperamos el ID del usuario en Decide gracias al token previamente almacenado. Extraemos la votación en la que desea participar el cliente y la respuesta que ha indicado (si/no). Si no ha introducido una respuesta adecuada se notificará con un mensaje. Llamamos a la API de Decide para almacenar un nuevo voto con los datos introducidos.En caso de error, se informará al cliente con un mensaje de que ha ocurrido un error.
+
+- Lineas 187 a 188. Cuando no se reconoce un comando, se envía al cliente un mensaje recordándole la existencia del comando __/commands_list__, en caso de que quisiese obtener un listado de los comandos disponibles.
+
+-- Líneas 183 a 200. Método para parsear el objeto devuelto por Decide y transformarlo en una lista de votaciones. Únicamente se seleccionan votaciones que hayan empezado pero no hayan acabado aún.
 
 ## Visión global del proceso de desarrollo
 
