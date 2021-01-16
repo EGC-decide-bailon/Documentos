@@ -278,6 +278,50 @@ Para los bots, el proceso cambia un poco debido a cómo hemos trabajado con ello
 8. La tarea pasa a `Closed` a la espera que se conecte con Travis y se hagan sus pruebas unitarias.
 
 ## Entorno de desarrollo
+
+Aunque como hemos dicho anteriormente existen diferencias en función al incremento funcional a desarrollar dentro del proyecto, hemos acordado utilizar el mismo ecosistema de desarrollo. Esta decisión la hemos tomado para tratar de evitar los problemas de configuración lo maximo posible y facilitar el "pair programming" en caso de ser necesario.
+
+### Siststema operativo
+En cuanto a sistema operativo se refiere utilizaremos Windows 10 (todos contamos con la versión 10 pero no es obligatorio, pues es de pago) y Ubuntu nativo en su versión 20.04.
+
+Hemos decidido usar Ubuntu de forma nativa, pues al principio del proyecto y de la asignatura nos encontramos con numerosos problemas al usar máquinas virtuales y además, los profesores nos dieron la recomendación de instalar Ubuntu en una partición del ordenador para ahorrarnos problemas.
+
+Los SO los hemos usado en función de las necesidades que han ido surgiendo. Al principio del proyecto, antes de tener desplegado Decide en heroku, era necesario desplegar de forma local Decide y probar las funcionalidades desarrolladas, para eso la sintaxis de la consola de comando de Ubuntu era mucho más sencilla y util. Sin embargo, en las etapas finales del proyecto donde teniamos que prestar más atención a la documentación y Decide ya se encontraba desplegado algunos integrantes usaron Windows 10 pues estaban más familiarizados con él.
+
+En cualquier caso el trabajo en ambos sistemas era muy similar, pues se utilizaba el mismo IDE como se detallará a continuación.
+
+### IDEs
+Para abordar proyectos de un tamaño mediano o grande es recomendable usar lo que se conoce como IDE.
+
+Los IDE (Integrated Development Enviroment) o en español Entornos de Desarrollo Integrado, aportan un marco de trabajo completo y amigable que permite incrementar la eficiencia y rapidez con la que se desarrolla el código.
+
+En nuestro caso particular hemos decidido utilizar IDEs, en vez de programas de edición de texto como VIM o NANO que aunque son mucho más ligero requieren una curva de aprendizaje mayor, que no era asumible en este proyecto.
+
+En concreto usaremos VSC (Visual Studio Code), porque nos ofrece numerosas ventajas sobre otros IDEs. VSC permíte una sencilla integración de librerías para el desarrollo de código, que permiten implementar desde un coloreado sintactico, con plug-ins como Monokai Night Theme, hasta cambiar los iconos de los archivos según su tipo para simplificar el entendimiento de estos y hacer así más ágil el trabajo (Material Icon Theme). También existen otros plugins que te ayudan a seguir las buenas practicas o autocompletar el código, pero en este caso no lo hemos utilizado. Otro beneficio que hemos encontrado en este IDE, es que integra la consola de comando lo que hace que cualquier tarea como subir codigo a github o abrir algún programa se realize de manera mucho más eficiente.
+
+### Gestor de código
+
+Como gestor de código usaremos Git-Hub, hemos decidido usarlo debido a que era el GC con el que más familiarizados estabamos todos los integrantes del equipo. Esto no es la única ventaja que nos aporta Git-Hub, si no que este además, nos permite crear una organización donde reunir los repositorios y los contribuidores del proyecto, coordinandolos de forma amigable mediante la creación de tableros Kanban donde se reflejan las tareas y avances en este. Además se pueden crear equipos de trabajo, que permiten esquivar la información general de la organización y centrarse en funciones parecidas a la de uno mismo.
+
+
+### Lenguajes de programación
+
+Nuestro equipo se dividirá en dos equipos de trabajo, `Bots` y `Angular`.
+ - El equipo `Angular` basará su trabajo en el framework Angular, y por tanto harán uso de un servidor Node construido en JavaScript. Como lenguajes usaron **JavaScript**, **TypeScript** , **CSS** y **HTML**.
+
+ - El equipo `Bots` usará como lenguaje de programación para el desarrollo de los incrementos funcionales **Python**. El hecho de que usemos todos este lenguaje no es casulidad, lo que buscamos es poder tener una gran transferencia de conocimiento, ya que aunque las APIs propias de cada Bot sean distintas la estructura general de este será bastante similar y es posible que los errores de un Bot los haya resuelto otro desarrollador previamente en su bot.
+
+### Integración continua y despliegue.
+
+Para lo referente a integración continua y despliegue del proyecto hemos usado Travis y Heroku.
+
+Travis es un sistema web que permite realizar integración continua en repositorios públicos de github de forma completamente gratuita. Hemos decidido usar esta herramienta debido a que el equipo ya estaba familiarizada con ella.
+
+Heroku es un sistema web que permite el despliegue de aplicaciones de forma gratuita, ya sea en repositorios publicos o privados de Git-Hub. Hemos decidido usar esta herramienta por recomendación del profesorado.
+
+
+
+
 ## Gestión de incidencias
 
 
