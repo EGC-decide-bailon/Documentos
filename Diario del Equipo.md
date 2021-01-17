@@ -14,21 +14,31 @@
 -	Jordá Arrillaga, Enrique
 -	Muñoz del Bot, Pablo 
 
-### Enlaces:
--	Repositorio
--	Sistema desplegado del módulo cabina
+### Enlaces de interés:
 
+[Organización](http://www.limni.net)
 
+Enlace a cada repositorio:
+- [Decide](https://github.com/EGC-decide-bailon/decide)
+- [Angular](https://github.com/EGC-decide-bailon/angular-decide-bailon)
+- [Bot Discord](https://github.com/EGC-decide-bailon/bot-dc)
+- [Bot Telegram](https://github.com/EGC-decide-bailon/bot-telegram)
+- [Bot Slack](https://github.com/EGC-decide-bailon/bot-slack)
+- [Bot Line](https://github.com/EGC-decide-bailon/bot-line)
+- [Documentación](https://github.com/EGC-decide-bailon/Documentos)
 
-
-
-
-
+Sistemas desplegados:
+- [Decide](https://decide-voting.herokuapp.com/)
+- [Angular](https://decide-angular-bailon.herokuapp.com/)
+- [Bot Discord](https://decide-cabina-bot-discord.herokuapp.com/)
+- [Bot Telegram](https://bot-slack-decide-bailon.herokuapp.com/)
+- [Bot Slack](https://egc-bailon-bot-slack.herokuapp.com/)
+- [Bot Line](https://bot-decide-line.herokuapp.com/)
 
 
 ## Reuniones.
 Las siguientes reuniones se llevaron a cabo online, tanto para tomar decisiones, como para trabajar en equipo.
-Se llevaron a cabo 13 reuniones a lo largo del Milestone 2.
+Se llevaron a cabo 16 reuniones a lo largo del Milestone 2.
 Actas de las reuniones.
 
 ### Acta 1.
