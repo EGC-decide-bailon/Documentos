@@ -653,6 +653,16 @@ Gracias al uso de esta configuración aparte de lo dicho anteriormente, nos ayud
 
 ## Propuesta de cambio
 
+Durante el desarrollo han surgido bastantes problemas de gestión de código, desde métodos duplicados y lineas de código irrelevantes hasta métodos poco eficientes por su complejidad.
+Aunque todos estos errores se han podido gestionar en mayor o menor medida nos parece un cambio necesario añadir una herramienta de gestión de código fuente como Codacy para poder analizar en profundidad y a mayor velocidad cada aspecto del desarrollo gracias a la elevada integración que esta herramienta nos proporciona con GitHub
+
+Codacy nos ofrece entre sus funcionalidades:
+-  Analiza de manera autónoma cada commit, pullrequest, issue... 
+-  Extrae y publica información relevante del proyecto
+-  Es compatible con Python y TypeScript que son los lenguajes que usamos en el proyecto
+-  Admite la ejecución de pruebas en paralelo
+-  Permite la ejecución de test de seguridad y parametrizados
+
 ## Conclusiones y trabajos futuros
 
 Daremos dos conclusiones sobre este trabajo , por un lado una referente a los bots y por otro uno que haga referencia a la incorporación de Angular como front-end.
