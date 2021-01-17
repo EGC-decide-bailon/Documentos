@@ -51,9 +51,9 @@ El equipo, como se detalla más adelante, enfocará su esfuerzo en hacer más ac
 
 | Miembro	| Horas	| Commits |	LoC |	Test | Issues |	Incremento |
 | --	| --	| -- |	-- |	--  | -- |	-- |
-| Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 `1` |	 | 11 |	Error de CORS |
+| Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 `1` |	6 | 11 |	Error de CORS |
 | Benítez Vega, Daniel	| 65	| 32  |	+612 -181 |	6 | 7 |	Bot de Line |
-| Beza Quesada, Laura	| 65	| 27 |	+891 -533 |	 | 7 |	Interfaz de Angular |
+| Beza Quesada, Laura	| 65	| 27 |	+891 -533 |	6 | 7 |	Interfaz de Angular |
 | García Nieto, Antonio Jesús	| 65	| 88 |	+766 -209 |	8 | 8 |	Bot de Discord |
 | Jordá Arrillaga, Enrique	| 65	| 33 |	+476 -90 |	7 | 7 |	Bot de Slack |
 | Muñoz del Bot, Pablo	| 65	| 24 | +881 -440 |	7 | 6 | Bot de Telegram	 |
