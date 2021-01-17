@@ -47,13 +47,16 @@ Sistemas desplegados:
 
 | Miembro	| Horas	| Commits |	LoC |	Test | Issues |	Incremento |
 | --	| --	| -- |	-- |	--  | -- |	-- |
-| Acuña Romero, Carlos Luis	| 	|  |	 |	 |  |	 |
-| Benítez Vega, Daniel	| 	|  |	 |	 |  |	 |
-| Beza Quesada, Laura	| 	|  |	 |	 |  |	 |
-| García Nieto, Antonio Jesús	| 	|  |	 |	 |  |	 |
-| Jordá Arrillaga, Enrique	| 	|  |	 |	 |  |	 |
-| Muñoz del Bot, Pablo	| 	|  |	 |	 |  |	 |
+| Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 *1 |	 | 11 |	Error de CORS |
+| Benítez Vega, Daniel	| 65	| 32  |	+612 -181 |	 | 7 |	Bot de Line |
+| Beza Quesada, Laura	| 65	| 27 |	+891 -533 |	 | 7 |	Interfaz de Angular |
+| García Nieto, Antonio Jesús	| 65	| 88 |	+766 -209 |	 | 8 |	Bot de Discord |
+| Jordá Arrillaga, Enrique	| 65	| 33 |	+476 -90 |	 | 7 |	Bot de Slack |
+| Muñoz del Bot, Pablo	| 65	| 24 | +881 -440 |	 | 6 | Bot de Telegram	 |
 
+**Como detalle es importante destacar que no se ha llevado una cuenta exhaustiva de las horas. Hemos trabajado con la confianza de que cada persona iba ha dar su mejor esfuerzo. Por lo tanto, nos parece correcto que todos tengamos la mísma calificación**
+
+ *1 - Acuña importo Angular con librerías lo que hace que tanto la cantidad de código escrito como eliminado sea inusual.
 
  En la tabla se representa la aportación de cada miembro sobre el proyecto y su trabajo de la siguiente forma:
  
@@ -63,6 +66,8 @@ Sistemas desplegados:
 -	Test: solo se tienen en cuenta aquellos realizados por el equipo.
 -	Issues: Aquellos issues gestionadas dentro del proyecto y por el equipo.
 -	Incremento: principal incremento funcional del que se ha hecho cargo el miembro del proyecto
+
+De media todos los compañeros de equipo hemos escrito unas 400 lineas de código lo cual está por encima de lo esperado. Este hecho deja ver un grupo comprometido al trabajo.
 
 
 ### Integración con otros equipos
