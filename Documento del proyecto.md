@@ -3,7 +3,6 @@
 # Decide-Single-Bailón- Cabina
 
 - Grupo: 2.
-- ID de opera: - 
 -	Curso escolar: 2020/2021
 -	Asignatura: Evolución y gestión de la configuración
 -	Milestone en el que se entrega la documentación: M3
@@ -53,11 +52,11 @@ El equipo, como se detalla más adelante, enfocará su esfuerzo en hacer más ac
 | Miembro	| Horas	| Commits |	LoC |	Test | Issues |	Incremento |
 | --	| --	| -- |	-- |	--  | -- |	-- |
 | Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 `1` |	 | 11 |	Error de CORS |
-| Benítez Vega, Daniel	| 65	| 32  |	+612 -181 |	 | 7 |	Bot de Line |
+| Benítez Vega, Daniel	| 65	| 32  |	+612 -181 |	6 | 7 |	Bot de Line |
 | Beza Quesada, Laura	| 65	| 27 |	+891 -533 |	 | 7 |	Interfaz de Angular |
-| García Nieto, Antonio Jesús	| 65	| 88 |	+766 -209 |	 | 8 |	Bot de Discord |
-| Jordá Arrillaga, Enrique	| 65	| 33 |	+476 -90 |	 | 7 |	Bot de Slack |
-| Muñoz del Bot, Pablo	| 65	| 24 | +881 -440 |	 | 6 | Bot de Telegram	 |
+| García Nieto, Antonio Jesús	| 65	| 88 |	+766 -209 |	8 | 8 |	Bot de Discord |
+| Jordá Arrillaga, Enrique	| 65	| 33 |	+476 -90 |	7 | 7 |	Bot de Slack |
+| Muñoz del Bot, Pablo	| 65	| 24 | +881 -440 |	7 | 6 | Bot de Telegram	 |
 
 **Como detalle es importante destacar que no se ha llevado una cuenta exhaustiva de las horas. Hemos trabajado con la confianza de que cada persona iba ha dar su mejor esfuerzo. Por lo tanto, nos parece correcto que todos tengamos la mísma calificación**
 
