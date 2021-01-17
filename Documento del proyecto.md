@@ -21,10 +21,24 @@
 
 ### Enlaces de interés:
 
+[Organización](http://www.limni.net)
 
--	repositorio de código
--	sistema desplegado
--	cualquier otro enlace de interés
+Enlace a cada repositorio:
+- [Decide](https://github.com/EGC-decide-bailon/decide)
+- [Angular](https://github.com/EGC-decide-bailon/angular-decide-bailon)
+- [Bot Discord](https://github.com/EGC-decide-bailon/bot-dc)
+- [Bot Telegram](https://github.com/EGC-decide-bailon/bot-telegram)
+- [Bot Slack](https://github.com/EGC-decide-bailon/bot-slack)
+- [Bot Line](https://github.com/EGC-decide-bailon/bot-line)
+- [Documentación](https://github.com/EGC-decide-bailon/Documentos)
+
+Sistemas desplegados:
+- [Decide](https://decide-voting.herokuapp.com/)
+- [Angular](https://decide-angular-bailon.herokuapp.com/)
+- [Bot Discord](https://decide-cabina-bot-discord.herokuapp.com/)
+- [Bot Telegram](https://bot-slack-decide-bailon.herokuapp.com/)
+- [Bot Slack](https://egc-bailon-bot-slack.herokuapp.com/)
+- [Bot Line](https://bot-decide-line.herokuapp.com/)
 
 
 ## Resumen ejecutivo
