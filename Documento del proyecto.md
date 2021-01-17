@@ -435,7 +435,7 @@ Para los bots, el proceso cambia un poco debido a cómo hemos trabajado con ello
 
 Aunque como hemos dicho anteriormente existen diferencias en función al incremento funcional a desarrollar dentro del proyecto, hemos acordado utilizar el mismo ecosistema de desarrollo. Esta decisión la hemos tomado para tratar de evitar los problemas de configuración lo maximo posible y facilitar el "pair programming" en caso de ser necesario.
 
-### Siststema operativo
+### Sistema operativo
 En cuanto a sistema operativo se refiere utilizaremos Windows 10 (todos contamos con la versión 10 pero no es obligatorio, pues es de pago) y Ubuntu nativo en su versión 20.04.
 
 Hemos decidido usar Ubuntu de forma nativa, pues al principio del proyecto y de la asignatura nos encontramos con numerosos problemas al usar máquinas virtuales y además, los profesores nos dieron la recomendación de instalar Ubuntu en una partición del ordenador para ahorrarnos problemas.
@@ -573,3 +573,69 @@ Esto se ve reflejado en el proyecto en las siguientes imágenes:
 ![Imagen 22](Imagenes/EjemplosRepositorio/commits3.png "commits 3")
 ![Imagen 23](Imagenes/EjemplosRepositorio/pullrequest.png "pull requests")
 
+
+## Gestión de la construcción e integración continua
+
+Debido a nuestra casuística, la integración continua en la parte de los bots, resulta un poco complicada de aplicar debido a que son bloques bastante separados e individuales si los comparamos a nuestro desarrollo relativo a la interfaz gráfica desarrollada con Angular sobre el subsistema Cabina(Booth). Aun así, las pruebas de código e integraciones de los distintos bloques de cada parte diferenciada se harán siguiendo el esquema propuesto por dicha metodología. Tomamos esta decisión debido a las ventajas que ofrece como el control de errores en fases tempranas del mismo, evitando que se vayan haciendo cada vez mayores y acumulándose todo al final, y también comprobar que vamos construyendo un código uniforme donde todo va funcionando en conjunto a lo desarrollado anteriormente.
+
+Viendo nuestro proyecto de forma global y teniendo en cuenta las divisiones realizadas, algunas características sobre la integración continua presentes son:
+
+1. Como ya hemos mencionado anteriormente, para cada incremento funcional teníamos un repositorio propio, ya que debíamos desplegar cada parte de forma individual, pero están todos dentro de la misma organización para poder así tener todo el código en un mismo sitio y poder tener un control global. La gestión de cada repositorio depende del responsable del propio incremento, pero queda definido un estándar global y queda establecido un mínimo de calidad para todo el mundo.
+
+2. El repositorio de la interfaz gráfica mediante Angular, al tener más de un responsable dentro trabajando, para evitar conflicto en las ramas principales de desarrollo, se automatizaron los builds con Travis. Estas ramas en concreto son master y develop, donde se hacen los commit de forma más formal y sin errores aparentes. Debido a esto, necesitamos asegurarnos uniformidad en todo el código y que pasen unos test automáticos que aseguren un mínimo de calidad. En los demás repositorios no es estrictamente necesario aunque sí es bastante recomendable su uso, ya que aunque casi todo lo vaya a desarrollar una misma persona, ayuda a que los demás puedan entender mejor el código por si surge algún error o se necesita la ayuda de otro miembro del equipo.
+
+3. De nuevo, en la parte de Angular del proyecto, si hemos podido seguir los consejos de hacer un commit al día, por lo menos en la última parte del proyecto, ya que al principio solo nos centramos en la resolución del problema que nos generaba el CORS. En el desarrollo de los bots, la cosa se nos complicó, por lo que hubo días que sólo se dedicaron a estudiar las API’s correspondientes o simplemente hubo avances pero se probaron o quedaron de forma local.
+
+4. Para hacer estos commits, implantamos un formato sencillo, pero que permita crear una uniformidad y un sentido al código subido. Para los nuevos archivos o partes importantes nuevas, los títulos van siempre precedidos de la palabra `Creado`. Para los archivos que reciban una actualización o se agreguen cosas pero de menor tamaño con respecto al total, empezarán por `Editado`. Y por último, para los borrados, se precede por `Eliminado`.
+En cuanto a la creación de actividades, antes de la descripción del mismo, también se ha establecido unos identificativos propios para los distintos incrementos funcionales.
+
+5. Para tener siempre la última versión de nuestro código desplegado en la nube, por cada repositorio, se ha desplegado en Heroku su rama master, lo que nos permite tener una versión actualizada de los avances a disposición del resto del equipo por si quieren hacer pruebas o necesitan de sus servicios en algún momento.
+
+6. Sobre la división de los dos grupos, cada uno es libre de autogestionarse como quiera, pero la comunicación entre ellos es básica y esencial para el buen funcionamiento del equipo.
+
+7. Como se ha nombrado antes, en la parte de Angular se va a usar Travis para el corregir el formato del código, más concretamente se usará Lint. Dentro del archivo .travis.yml antes de hacer el build del proyecto, se ejecutan estos scripts que revisarán todo el código de Angular.
+
+Todos y cada uno de los scripts se encuentran dentro del archivo tslint.json y contiene código como el siguiente:
+
+```typescript
+"max-classes-per-file": false,
+    "max-line-length": [
+      true,
+      140]
+Donde se define un formato para las líneas de código, dándole un máximo de longitud de 140. O este ejemplo donde se muestra todo el formato del propio texto:
+    "component-class-suffix": true,
+    "contextual-lifecycle": true,
+    "directive-class-suffix": true,
+    "no-conflicting-lifecycle": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-inputs-metadata-property": true,
+    "no-output-native": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-outputs-metadata-property": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    "use-lifecycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"]
+```
+Gracias al uso de esta configuración aparte de lo dicho anteriormente, nos ayuda a prevenir bad smells en todo el código, como líneas vacías, atributos no usados, imports innecesarios.
+
+## Gestión de liberaciones y entregas
+
+## Propuesta de cambio
+
+## Conclusiones y trabajos futuros
+
+Daremos dos conclusiones sobre este trabajo , por un lado una referente a los bots y por otro uno que haga referencia a la incorporación de Angular como front-end.
+Empezaremos con los bots. De cara a los proximos años proponemos un avanze tanto vertical como horizontal. Por un lado de forma vertical, proponemos profundizar en el desarrollo de los bots incluyendo elementos de interacción por voz (Discord) o integrando una forma de interactuar mediante el uso de botones, deslizables o incluir animaciones.También se podría integrar un servicio para iniciar sesión a traves de terceros, evitando así tener que escribir las credenciales en un mensaje de texto y evitando los riesgos que ello acarrea.
+Además, en el sentido del progreso horizontal proponemos la integración de otros bots, una plataforma muy interesante es What's Up.
+
+Respecto a la parte de Angular, ha sido una experiencia muy enriquecedora. Por un lado nos hemos enfrentado a problemas nuevos como son el error de CORS, conexión entre servidores ... etc . Proponemos de cara a los proximos años, que utilicen este proyecto como plantilla o como consulta para solucionar rapido errores típicos y así poder centrarse en la creación de interfaces novedosas para el resto de modulos, incluyendo vistas con videos, animaciones, cargas dinámicas ...
+
+En definitiva hemos aprendido mucho, tanto tecnológicamente como a nivel de interacción de grupo, y en especial de cara al uso de herramientas de gestión de código fuente colaborativas como Git Hub.
