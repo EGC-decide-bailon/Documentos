@@ -547,6 +547,10 @@ Concretamente, al crear la issue, se le proporcionará una etiqueta dependiendo 
 
 Aquí se adjuntan unas capturas de pantalla que demuestran su utilización.
 
+![Imagen 18](Imagenes/EjemplosRepositorio/kanban1.png "kanban 1")
+
+![Imagen 19](Imagenes/EjemplosRepositorio/kanban2.png "kanban 2")
+
 
 Dentro de la organización hemos creado dos equipos, el equipo encargado de los bots, y el equipo encargado de angular. El primer equipo seguirá una política menos estricta, ya que cada uno de los componentes se encargará de un bot de forma individual, por lo que será el único que edite el código del repositorio asignado al desarrollo de su bot. En los repositorios de bot, se harán los commits y cambios directamente en la rama master. La política a seguir para realizar los commits para comprobar que el código desarrollado hasta el momento se ha realizado correctamente, excepto para los casos en los que se tengan que probar o editar ficheros de cara al despliegue de la aplicación, en ese caso se podrán realizar los commits directamente. 
 
@@ -560,8 +564,12 @@ Referente al repositorio, se creará una branch según la funcionalidad a realiz
 
 Lo explicado anteriormente se puede ver reflejado en las siguientes imágenes:
 
+![Imagen 20](Imagenes/EjemplosRepositorio/commits1.png "commits 1")
+![Imagen 21](Imagenes/EjemplosRepositorio/commits2.png "commits 2")
 
 Las palabras clave para el nombrado de los commits , tanto referente a los repositorios de los bots como para angular-decide-bailon, será la acción : creado/añadido, editado ,eliminado, arreglado/corregido,  de la clase o componente al que le afecte.
 Esto se ve reflejado en el proyecto en las siguientes imágenes: 
 
+![Imagen 22](Imagenes/EjemplosRepositorio/commits3.png "commits 3")
+![Imagen 23](Imagenes/EjemplosRepositorio/pullrequest.png "pull requests")
 
