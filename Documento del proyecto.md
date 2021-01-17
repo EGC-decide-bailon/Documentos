@@ -43,11 +43,16 @@ Sistemas desplegados:
 
 ## Resumen ejecutivo
 
+El grupo **Decide - Single-Bailón - Cabina** se enfrenta con este proyecto a mejora de un sistema previamente diseñado, Decide. Decide es un sistema de votación electronico, desarrollado en su totalidad por una empresa externa al grupo de desarrollo, por lo que se entiende  que los integrantes de este equipo se enfrentarán al código heredado para ser capaz de integran nuevas funcionalidades.
+
+El equipo, como se detalla más adelante, enfocará su esfuerzo en hacer más accesible decide, implementado bots en redes sociales cotidianas. También se pretende mejorar la interfaz gráfica del portal mediante el uso del framework de desarrollo para front-end, Angular.
+
+
 ### Indicadores del Proyecto
 
 | Miembro	| Horas	| Commits |	LoC |	Test | Issues |	Incremento |
 | --	| --	| -- |	-- |	--  | -- |	-- |
-| Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 *1 |	 | 11 |	Error de CORS |
+| Acuña Romero, Carlos Luis	| 65 	| 23 |	+17,200 -739 `1` |	 | 11 |	Error de CORS |
 | Benítez Vega, Daniel	| 65	| 32  |	+612 -181 |	 | 7 |	Bot de Line |
 | Beza Quesada, Laura	| 65	| 27 |	+891 -533 |	 | 7 |	Interfaz de Angular |
 | García Nieto, Antonio Jesús	| 65	| 88 |	+766 -209 |	 | 8 |	Bot de Discord |
@@ -56,7 +61,7 @@ Sistemas desplegados:
 
 **Como detalle es importante destacar que no se ha llevado una cuenta exhaustiva de las horas. Hemos trabajado con la confianza de que cada persona iba ha dar su mejor esfuerzo. Por lo tanto, nos parece correcto que todos tengamos la mísma calificación**
 
- *1 - Acuña importo Angular con librerías lo que hace que tanto la cantidad de código escrito como eliminado sea inusual.
+ **`1` - Acuña importo Angular con librerías lo que hace que tanto la cantidad de código escrito como eliminado sea inusual.**
 
  En la tabla se representa la aportación de cada miembro sobre el proyecto y su trabajo de la siguiente forma:
  
