@@ -651,6 +651,64 @@ Gracias al uso de esta configuración aparte de lo dicho anteriormente, nos ayud
 
 ## Gestión de liberaciones y entregas
 
+### Liberación
+
+De acuerdo con todos los integrantes del grupo se ha decidido realizar la liberación de decide-bailon cuando todas la funcionalidades implementadas en el proyecto funcionen correctamente y sea posible su despliegue.
+
+### Despliege
+
+En cuanto al despliegue en local, cada grupo de trabajo lo ha realizado de una forma diferente. 
+Por una parte, los encargados de desarrollar los bots necesitaban
+utilizar Flask para la recepción de peticiones, y Ngrok para poder probar los scripts que habían desarrollado, puesto que necesitaban conectar las plataformas
+a localhost, y Ngrok ofrece un servicio que conecta localhost con una URL proporcionada de forma gratuita.
+Por otra parte, el servicio de angular se desplegaba normalmente en localhost mediante comandos de angular, puesto que podian realizar peticiones hacia decide
+mientras este también estaba desplegado de forma local.
+
+En cuanto al despliegue de forma remota, todos los servicios desarrollados por el grupo se encuentran desplegados en heroku.
+Debido a un problema con el __CORS__, el primer servicio en ser desplegado fue decide, ya que cuando empezamos a investigar sobre el problema pensamos que 
+teniendo el servicio desplegado de forma remota podría solucionarse. Poco a poco se fueron desplegando los bots para que fuesen accesibles en cualquier momento.
+En primer lugar es necesario crear una cuenta en Heroku, crear una aplicación y linkearla con nuestro repositorio en GitHub. Este proceso puede realizarse tanto
+en la página de Heroku, como desde nuestra consola si instalamos heroku-cli.
+También fue necesario diseñar algunos archivos. Nos centraremos unicamente en los archivos diseñados para el despliegue de los servicios
+realizados por el grupo, ya que el despliegue en Heroku de Decide se vio en clases prácticas de la asignatura. Fundamentalmente fueron necesarios 2 archivos:
+__requirements.txt__
+En este archivo se expresan las dependencias del proyecto para que Heroku pueda instalarlas en su entorno y que nuestra aplicación pueda funcionar con normalidad.
+Dependiendo del servicio desarrollado varían las dependencias que aparecen en este fichero.
+__Procfile__
+En este archivo aparecen las configuraciones de los dyno, así como el comando de arranque para el despliegue de la aplicación. Este archivo es bastante similar
+entre la mayoría de aplicaciones, ya que 4 de nuestros servicios son bots.
+
+Para controlar la calidad de nuestro software, implementamos Travis en nuestro repositorio. Travis nos permite seguir una estructura de integración continua, 
+ejecutando una serie de tests cada vez que hacemos un commit en nuestro repositorio. Para configurar Travis únicamente hay que linkear el repositorio desde
+su página web, y diseñar un fichero de configuración __.travis.yml__. En este fichero se debe indicar el lenguaje de programación en el que está diseñado nuestro
+software, ciertos requerimientos para las dependencias, e información sobre nuestra aplicación de Heroku para que se ejecuten los test sobre esta.
+
+```.travis.yml
+language: python
+python:
+- 3.9.0
+install:
+- pip install -r requirements.txt
+- pip install codacy-coverage
+script:
+- python -m unittest
+deploy:
+  provider: heroku
+  app: egc-bailon-bot-slack
+  strategy: git
+  api_key: $HEROKU_AUTH_TOKEN
+```
+Además, como podemos ver hay un apartado de despliegue, lo que quiere decir que este fichero ejecutará además despliegue continuo. En este apartado, le indicamos donde queremos
+desplegar nuestra aplicación, como se llama nuestra aplicación y la api_key que nos permite conectar y iniciar la comunicación entre travis y heroku. Para esto además 
+debemos introducir esta api en las variables de entorno de travis.
+
+### Entregas
+
+Para realizar la entrega cada integrante del equipo debe tener su repositorio completamente listo y preparado y, por tanto, poder demostrar que cumple todos los requisitos que se piden en el proyecto.
+Para ello, una vez terminado, será necesario una revisión entera del proyecto por parte de todo el equipo, con el fin de evitar errores o problemas en la entrega.
+Una vez esté todo revisado, un miembro del equipo rellenará el formulario de la wiki con todo lo necesario para cumplir el registro satisfactoriamente.
+
+
 ## Propuesta de cambio
 
 Durante el desarrollo han surgido bastantes problemas de gestión de código, desde métodos duplicados y lineas de código irrelevantes hasta métodos poco eficientes por su complejidad.
